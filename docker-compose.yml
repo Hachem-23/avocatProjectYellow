@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+
+  avocat-database:
+    image: mysql:8
+    container_name: avocat-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: avocat
+      MYSQL_ROOT_PASSWORD: avocat
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql/avocat-data:/var/lib/mysql
+    networks:
+      - avocat-network
+
+networks:
+  avocat-network:
+    driver: bridge
